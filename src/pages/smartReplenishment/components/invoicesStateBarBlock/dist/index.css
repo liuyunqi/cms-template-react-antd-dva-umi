@@ -1,0 +1,34 @@
+.invoicesStateBarBlock {
+  display: inline-flex;
+  line-height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.invoicesStateBarBlock.actionIsReject {
+  background-color: #FFF0EF;
+}
+.invoicesStateBarBlock.actionIsReject .stateName {
+  background-color: #FF3838;
+}
+.invoicesStateBarBlock.actionIsPass {
+  background-color: #EAF9F0;
+}
+.invoicesStateBarBlock.actionIsPass .stateName {
+  background-color: #009639;
+}
+.invoicesStateBarBlock .stateName {
+  color: #fff;
+  padding: 0 8px;
+}
+.invoicesStateBarBlock .content {
+  padding: 0 20px;
+  display: inline-block;
+  flex: 1;
+}
+.invoicesStateBarBlock .content .item {
+  margin-right: 40px;
+  display: inline-block;
+}
+.invoicesStateBarBlock .content .item:last-child {
+  margin-right: 0;
+}

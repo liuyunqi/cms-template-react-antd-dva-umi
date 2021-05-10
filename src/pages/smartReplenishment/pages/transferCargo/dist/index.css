@@ -1,0 +1,12 @@
+.page {
+  padding: 8px;
+}
+.page .tableBox {
+  background-color: white;
+}
+.page .footerWrapper {
+  text-align: right;
+}
+.page .footerWrapper button {
+  margin-left: 8px;
+}

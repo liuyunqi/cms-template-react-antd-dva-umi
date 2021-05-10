@@ -1,0 +1,72 @@
+
+.floatR {
+  float: right;
+}
+
+/*单行溢出*/
+
+.text-cut-single {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*多行溢出 手机端使用*/
+
+.text-cut {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* -webkit-line-clamp: 2; */
+  -webkit-box-orient: vertical;
+}
+
+
+// 弹性布局
+.common-flex-wrap {
+  display: flex;
+  .common-flex-item {
+    flex: 1;
+  }
+}
+
+// half布局
+.common-half-item {
+  width: 50%;
+  display: inline-block;
+}
+
+// cell - 键值对布局
+.common-cell-row {
+  display: flex;
+
+  .common-cell-label {
+    text-align: right;
+    width: 78px;
+    display: inline-block;
+  }
+
+  .common-cell-value {
+    flex:1;
+    box-sizing: border-box;
+  }
+}
+
+
+.common-row-content {
+  .item-div {
+    margin-right: 16px;
+    line-height: 32px;
+    display: inline-block;
+
+    .bam-label {
+      margin-right: 7px;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    .bam-content {
+      display: inline-block;
+    }
+  }
+}

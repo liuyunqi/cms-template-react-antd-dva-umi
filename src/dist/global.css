@@ -1,0 +1,52 @@
+.floatR {
+  float: right;
+}
+/*单行溢出*/
+.text-cut-single {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*多行溢出 手机端使用*/
+.text-cut {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* -webkit-line-clamp: 2; */
+  -webkit-box-orient: vertical;
+}
+.common-flex-wrap {
+  display: flex;
+}
+.common-flex-wrap .common-flex-item {
+  flex: 1;
+}
+.common-half-item {
+  width: 50%;
+  display: inline-block;
+}
+.common-cell-row {
+  display: flex;
+}
+.common-cell-row .common-cell-label {
+  text-align: right;
+  width: 78px;
+  display: inline-block;
+}
+.common-cell-row .common-cell-value {
+  flex: 1;
+  box-sizing: border-box;
+}
+.common-row-content .item-div {
+  margin-right: 16px;
+  line-height: 32px;
+  display: inline-block;
+}
+.common-row-content .item-div .bam-label {
+  margin-right: 7px;
+  font-size: 14px;
+  display: inline-block;
+}
+.common-row-content .item-div .bam-content {
+  display: inline-block;
+}

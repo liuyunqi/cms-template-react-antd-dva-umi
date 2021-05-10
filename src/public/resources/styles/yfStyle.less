@@ -1,0 +1,305 @@
+@import './yfVariables.less';
+
+:global {
+
+  /** 按钮 */
+  .ant-btn {
+    width: 80px;
+    border-radius: @radius4;
+    padding: 4px 17px;
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.ant-btn-primary {
+      &.ant-btn-dangerous {
+        background: @yf_dangerous;
+        border-color: @yf_dangerous;
+      }
+    }
+
+    &.ant-btn-default {
+      border-color: #dedfe1;
+    }
+  }
+
+  .ant-btn-sm {
+    padding: 0px 17px;
+  }
+
+  /** 表格 */
+  .ant-table {
+    .ant-table-thead {
+      >tr {
+        >th {
+          background: @yf_table_background;
+        }
+      }
+    }
+
+    .ant-table-tbody {
+      >tr {
+        &.ant-table-row-selected {
+          >td {
+            background: unset;
+          }
+        }
+
+        &:nth-child(2n) {
+          background: @yf_table_background;
+        }
+
+        &:hover {
+          >td {
+            background: @yf_table_hover_background;
+          }
+        }
+      }
+    }
+  }
+
+  /** Pagination */
+  .ant-pagination {
+    .ant-pagination-total-text {
+      color: #666;
+    }
+
+    .ant-pagination-item {
+      border-radius: @radius6;
+      border-color: @yf_pagination_border_color;
+
+      a {
+        color: #666;
+      }
+
+      &.ant-pagination-item-active {
+        background-color: @yf_primary;
+        border-color: @yf_primary;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    .ant-pagination-prev,
+    .ant-pagination-next {
+      border-radius: @radius6;
+      border-color: @yf_pagination_border_color;
+
+      .ant-pagination-item-link {
+        border-radius: @radius6;
+        border-color: @yf_pagination_border_color;
+      }
+    }
+
+    .ant-pagination-options-quick-jumper {
+      input {
+        border-radius: @radius4;
+        border-color: @yf_pagination_border_color;
+      }
+    }
+  }
+
+  /** Select */
+  .ant-select-single:not(.ant-select-customize-input) {
+    .ant-select-selector {
+      border-radius: @radius4;
+      border-color: @yf_select_border_color;
+    }
+  }
+
+  .ant-select-dropdown {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    border-radius: @radius4;
+  }
+
+  .ant-select-item {
+    min-height: 40px;
+    padding: 9px 12px;
+  }
+
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: @yf_select_active_color;
+    background-color: @yf_select_active_background_color;
+  }
+
+  /** model */
+  .yfModalMiddle {
+    .ant-modal-content {
+      .ant-modal-body {
+        min-height: 295px;
+        max-height: 295px;
+        overflow-y: scroll;
+      }
+    }
+  }
+
+  .yfModalBig {
+    .ant-modal-content {
+      .ant-modal-body {
+        min-height: 551px;
+        max-height: 551px;
+        overflow-y: scroll;
+      }
+    }
+  }
+
+  .ant-modal-root {
+    .ant-modal-close-x {
+      height: 50px;
+      width: 50px;
+
+      .anticon {
+        vertical-align: 0;
+      }
+    }
+
+    .ant-modal-content {
+      border-radius: @radius4;
+
+      .ant-modal-header {
+        padding: 14px 16px;
+        border-radius: @radius4 @radius4 0 0;
+
+        .ant-modal-title {
+          font-size: 18px;
+          font-weight: 400;
+          color: @yf_modal_header_title;
+        }
+      }
+
+      .ant-modal-footer {
+        border-radius: 0 0 @radius4 @radius4;
+      }
+    }
+  }
+
+  /** */
+  .ant-input {
+    border-radius: @radius4;
+    border-color: @yf_input_border_color;
+  }
+
+  /** 穿梭框 */
+  .ant-transfer {
+    .ant-transfer-list {
+      border-radius: @radius4;
+
+      .ant-transfer-list-content {
+        .ant-transfer-list-content-item:not(.ant-transfer-list-content-item-disabled) {
+          &.ant-transfer-list-content-item-checked:hover {
+            background-color: @yf_transfer_background_color;
+          }
+        }
+      }
+
+      // 搜索框
+      .ant-transfer-list-body-search-wrapper {
+        padding: 2px 3px;
+
+        .ant-transfer-list-search-action {
+          top: 3px;
+          right: 6px;
+        }
+      }
+    }
+
+    .ant-transfer-operation {
+      .ant-btn {
+        border-radius: @radius4;
+      }
+    }
+  }
+
+  .ant-transfer-list-content-item-checked {
+    background-color: @yf_transfer_background_color;
+  }
+
+  /** message */
+  .ant-message {
+    .ant-message-notice-content {
+      border-radius: @radius4;
+      background-color: #fff;
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  /** 步骤条 */
+  .ant-steps-item-error {
+    .ant-steps-item-icon {
+      border-color: @yf_steps_border_color;
+    }
+
+    >.ant-steps-item-container {
+      >.ant-steps-item-content {
+        >.ant-steps-item-title {
+          color: @yf_steps_error_color;
+        }
+
+        >.ant-steps-item-description {
+          color: @yf_steps_error_color;
+        }
+      }
+    }
+  }
+
+  /** 日期选择 */
+  .ant-picker {
+    border-radius: @radius4;
+  }
+
+  .ant-picker-cell-in-view {
+    &.ant-picker-cell-today {
+      .ant-picker-cell-inner {
+        color: @yf_primary;
+      }
+    }
+
+    &.ant-picker-cell-selected {
+      .ant-picker-cell-inner {
+        color: #fff;
+      }
+    }
+
+    &.ant-picker-cell-in-range {
+      &::before {
+        background: @yf_rangePicker_background_color;
+      }
+    }
+  }
+
+  .ant-picker-header {
+    .ant-picker-header-view {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .ant-picker-panel-container {
+    .ant-picker-footer {
+      .ant-picker-ok {
+        >button {
+          padding: 0px 7px;
+        }
+      }
+    }
+  }
+
+  .ant-picker-cell:hover:not(.ant-picker-cell-in-view) .ant-picker-cell-inner,
+  .ant-picker-cell:hover:not(.ant-picker-cell-selected):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end):not(.ant-picker-cell-range-hover-start):not(.ant-picker-cell-range-hover-end) .ant-picker-cell-inner {
+    background: @yf_dataPicker_hover_background_color;
+  }
+
+  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
+    background: @yf_rangePicker_background_color;
+  }
+
+  .ant-picker-time-panel-column>li.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+    background: @yf_dataPicker_hover_background_color;
+  }
+}

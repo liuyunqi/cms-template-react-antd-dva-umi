@@ -1,0 +1,22 @@
+.homeContainer {
+  @themeColor: #009639;
+  height: calc(~'100vh - 64px');
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*兼容火狐*/
+  scrollbar-width: none;
+  /* 兼容IE10+ */
+  -ms-overflow-style: none;
+  padding: 20px;
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .tabWrap {
+    background-color: #fff;
+  }
+}

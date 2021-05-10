@@ -1,0 +1,26 @@
+
+.common-tableHeader-wrapp {
+    display: flex;
+
+    .item-box {
+        flex: 1;
+        display: inline-block;
+
+        &.textAlign-R {
+            text-align: right;
+        }
+
+        button.ant-btn {
+            margin-right: 10px;
+
+            &:nth-last-child(1) {
+                margin-right: 0;
+            }
+        }
+
+        .searchInput {
+            margin-right: 10px;
+            width: 200px;
+        }
+    }
+}

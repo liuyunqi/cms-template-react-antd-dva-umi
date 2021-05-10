@@ -1,0 +1,40 @@
+.countContainer {
+  padding: 20px;
+  .total {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .buttonWrap {
+    > button {
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .todoContainer {
+    .inputWrap {
+    }
+    .todoContent {
+      padding: 15px;
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #fff;
+      > p {
+        height: 22px;
+        line-height: 22px;
+        margin: 0;
+        padding-left: 15px;
+        cursor: pointer;
+        &:hover {
+          background-color: #f2f2f2;
+        }
+        &.completed {
+          text-decoration: line-through;
+          color: #ddd;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.modalWrapper .item {
+  margin: 6px 0;
+  line-height: 20px;
+}
+.modalWrapper .item .label {
+  width: 140px;
+}
+.miniTable {
+  border: 1px solid #ddd;
+}
+.miniTable .mItem {
+  line-height: 36px;
+  border-bottom: 1px solid #ddd;
+}
+.miniTable .mItem:last-child {
+  border-bottom: none;
+}
+.miniTable .mLabel {
+  width: 160px;
+  background-color: #eaeaea;
+}
+.miniTable .mContent {
+  padding-left: 10px;
+}
+.horizontalWrapper {
+  display: flex;
+}
+.horizontalWrapper .cellWrapper {
+  flex: 1;
+}
+.horizontalWrapper .cellWrapper .cellItem {
+  margin-right: 64px;
+  line-height: 32px;
+  display: inline-block;
+}
+.horizontalWrapper .cellWrapper .cellItem:last-child {
+  margin-right: 0;
+}
+.horizontalWrapper .siblingsWrapper {
+  text-align: right;
+  display: inline-block;
+}

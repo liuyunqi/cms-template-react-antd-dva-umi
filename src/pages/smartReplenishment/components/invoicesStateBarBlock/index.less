@@ -1,0 +1,43 @@
+
+.invoicesStateBarBlock {
+    display: inline-flex;
+    line-height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+  
+    &.actionIsReject {
+      background-color: #FFF0EF;
+  
+      .stateName {
+        background-color: #FF3838;
+      }
+    }
+  
+    &.actionIsPass {
+      background-color: #EAF9F0;
+  
+      .stateName {
+        background-color: #009639;
+      }
+    }
+  
+    .stateName {
+      color: #fff;
+      padding: 0 8px;
+    }
+  
+    .content {
+      padding: 0 20px;
+      display: inline-block;
+      flex: 1;
+      
+      .item {
+        margin-right: 40px;
+        display: inline-block;
+  
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }

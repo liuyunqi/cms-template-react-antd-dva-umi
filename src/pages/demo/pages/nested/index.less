@@ -1,0 +1,34 @@
+.nestedContainer {
+  @themeColor: #009639;
+  height: calc(~'100vh - 64px');
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*兼容火狐*/
+  scrollbar-width: none;
+  /* 兼容IE10+ */
+  -ms-overflow-style: none;
+  padding: 20px;
+  h2 {
+    text-align: center;
+  }
+  .titleWrap {
+    display: flex;
+    margin-bottom: 15px;
+    > div {
+      flex: 1;
+      font-size: 16px;
+      text-align: center;
+      transition: color 0.2s;
+      &:hover {
+        color: @themeColor;
+        cursor: pointer;
+      }
+      &.active {
+        color: @themeColor;
+      }
+    }
+  }
+}

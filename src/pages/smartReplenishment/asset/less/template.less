@@ -1,0 +1,59 @@
+// cell 结构
+.modalWrapper {
+  .item {
+    margin: 6px 0;
+    line-height: 20px;
+
+    .label {
+      width: 140px;
+    }
+  }
+}
+
+// 简易迷你表格 - 改色
+.miniTable {
+  border: 1px solid #ddd;
+
+  .mItem {
+    line-height: 36px;
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .mLabel {
+    width: 160px;
+    background-color: #eaeaea;
+  }
+
+  .mContent {
+    padding-left: 10px;
+  }
+}
+
+// 横向布局 (可选-额外占格)
+.horizontalWrapper {
+  display: flex;
+
+  .cellWrapper {
+    flex: 1;
+
+    .cellItem {
+      margin-right: 64px;
+      line-height: 32px;
+      display: inline-block;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .siblingsWrapper {
+    text-align: right;
+    display: inline-block;
+  }
+}
+

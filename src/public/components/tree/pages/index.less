@@ -1,0 +1,43 @@
+@import '../../../resources/styles/yfStyle.less';
+.transferModal {
+  top: 20px;
+  :global {
+    .ant-transfer-list-header {
+      display: none;
+    }
+    .ant-tree .ant-tree-node-content-wrapper {
+      position: relative;
+    }
+    .selectTree {
+      position: absolute;
+      display: inline-block;
+      line-height: 24px;
+      top: 0;
+      right: 8px;
+      color: #009639;
+    }
+    .activeText {
+      color: @yf_dangerous;
+    }
+    .ant-transfer-list-body-customize-wrapper {
+      height: 532px;
+      overflow-y: scroll;
+    }
+    .ant-transfer-list {
+      height: 532px;
+      // overflow-y: scroll;
+    }
+    .ant-input-group-wrapper {
+      width: 320px;
+      margin: 5px 6px 0;
+      .ant-btn {
+        padding: 2.4px 0;
+      }
+    }
+  }
+  .treeWrap {
+    min-height: 540px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+  }
+}

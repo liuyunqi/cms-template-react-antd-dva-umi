@@ -1,0 +1,9 @@
+.page {
+  padding: 8px;
+}
+.page .chartWrapper {
+  display: flex;
+}
+.page .chartWrapper .item {
+  flex: 1;
+}
