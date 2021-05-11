@@ -1,7 +1,7 @@
 
 ## 项目结构
 .
-├── config                                 # 项目配置文件
+├── config                                 # 项目配置文件                                                                                                                     
 │   ├── config.development.ts              # dev环境注入文件
 │   ├── config.local.ts                    # local环境注入文件
 │   ├── config.prod.ts                     # prod环境注入文件
@@ -49,3 +49,21 @@ src/pages 下，子目录中 models 目录下的文件
 src/pages 下，所有 model.ts 文件`
 
 model 命名需要已 模块名为前缀+页面名 ，如：当前模块是demo,当前页面为home，最终model的namespace => demoHomeStore .
+
+
+## BambooSnake-React [dva + umi + antd]
+
+>本人对目前通过  dva umi 构建的项目框架本身进行了相关的组件封装开发，目的是提高开发效率，降低开发难度。将中后台项目中会多次出现的需求及功能将其整合封装起来。
+
+## 表格篇
+
+目前表格使用 antd-UI ，表格组件封装了 Table-antd 和 Pagination-antd；
+
+```javascript
+// 使用bamboo表格组件
+import BambooTable from '../../components/Table';
+```
+
+
+
+
