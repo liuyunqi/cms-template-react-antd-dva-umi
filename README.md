@@ -62,8 +62,51 @@ model 命名需要已 模块名为前缀+页面名 ，如：当前模块是demo,
 ```javascript
 // 使用bamboo表格组件
 import BambooTable from '../../components/Table';
+
+return (
+    <BambooTable dataSource={ dataSourceList } columns={ columns } rowKey={ 'id' } ALLEVENTCallback={ tableLLEVENTCallback }/>
+)
 ```
 
+## 列头配置
 
+推荐方式为独立的 列头配置文件 和 列头.d
+
+```
+...,
+mock,
+pages --> homePage --> [ index.tsx, index.less, columns.ts, columns.d.ts ],
+...otherlibs
+
+```
+
+```javascript
+// columns.ts
+
+import { ColumnsType } from 'antd/es/table';
+import { ColumnsTypeMine } from '../../components/Table/index.d';
+import { columnItemDecorator } from '../../components/Table/creator';
+import { keys } from './columns.d';
+
+// 待后期字段确认后可做统一配置管理 - (这里KEYS最好是写泛型解决类型指向enum的问题)
+const originalConfMax = (
+  columnItemDecorator
+)({
+  [keys.mainbarCode]: { name: '商品条码' },
+  [keys.goodCode]: { name: '商品编码' }
+}, keys);
+
+// 将其导出
+export const column_ALL: ColumnsTypeMine = [
+  originalConfMax[keys.goodName],
+  originalConfMax[keys.mainbarCode]
+];
+
+```
+
+```javascript
+// columns.d.ts
+
+```
 
 
