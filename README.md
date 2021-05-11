@@ -136,8 +136,8 @@ export enum keys {
 columns.d.ts 的<kbd>keys</kbd>是枚举对象，键值对形式，其中【键】命名后不可更改，【值】则根据实际数据字段自由更改。
 这里之所以使用<kbd>columns.ts</kbd>和<kbd>columns.d.ts</kbd>方式，而不直接定义在index.tsx里是因为有以下几种应用情况。
 
-·当前页面为 tabs切卡 + 表格，每次切换不同 tab-item，每个tab的表格列头不一致，统一配置达到复用目的；
-·使用手动静态mock，mockdata的 key 与 真实完全同步，所以配置当前到enum对象中；
+·当前页面为 tabs切卡 + 表格，每次切换不同 tab-item，每个tab的表格列头不一致，统一配置达到复用目的；  
+·使用手动静态mock，mockdata的 key 与 真实完全同步，所以配置当前到enum对象中；  
 
 
 
@@ -235,11 +235,8 @@ export const setActionsTestMock : ActionInterface[] = [
 上述还有非常多种，具体可以参考 @/components/Table/tableMock.tsx。（同时你可以使用该文件内的数据生成示例参考，datasource、columns、actions 都是齐全的）
 
 <b>eventType</b> 为事件响应模式 { enumEventType.CALLBACK, enumEventType.MODALBOX, enumEventType.POPCONFIRM }；  
-
 <b>eventSubstance</b> 为配套对应不同 eventType , 配置完全不同；  
-
 <b>condition</b> 为渲染条件，内含 { hide, transparent, locked }, 优先级按此序列；条件书写为 eval(string), 内置关键字为 'record';  
-
 <b>viewMode</b> 为渲染显示模式，文字/icon, { enumViewMode.DEFAULT, enumViewMode.ICON, enumViewMode.ICONTEXT }。
 
 
@@ -331,10 +328,10 @@ export const setColumns = [
 
 这里condition（条件）要特别说下，它决定了被配置列头里的渲染条件，根据条件满足与否执行A/B；
 
-condition本身是数组，参考概念为 condition = [ boolean, A, B ]。
-c[0] 是布尔，成功执行A，不满足执行B；
-A/B  是一个单个模板完整的配置方案；
-B 非必填，不填时则渲染默认模板 ColumnCustomType.NORMALRENDER（默认文本显示）。
+condition本身是数组，参考概念为 condition = [ boolean, A, B ]。  
+c[0] 是布尔，成功执行A，不满足执行B；  
+A/B  是一个单个模板完整的配置方案；  
+B 非必填，不填时则渲染默认模板 ColumnCustomType.NORMALRENDER（默认文本显示）;  
 
 
 c[0]：书写可以是 true/ false/ 表达式， 或 eval(string)，string数据关键字为 'record';
@@ -392,14 +389,14 @@ c[0]：书写可以是 true/ false/ 表达式， 或 eval(string)，string数据
 
 ## 模板template
 
-目前使用的模板都是内置的。在 ./template.tsx 中。
-需要新增则需要扩展 ColumnCustomType 类型名称 及 对应的 render 函数。
+目前使用的模板都是内置的。在 ./template.tsx 中。  
+需要新增则需要扩展 ColumnCustomType 类型名称 及 对应的 render 函数。  
 
-理想的最优解为之后迭代，让今后使用者能够外部定义追加扩展模板及模板类型名称。
+理想的最优解为之后迭代，让今后使用者能够外部定义追加扩展模板及模板类型名称。  
 
 ## 表格事件
 
-通过配置表格组件Props - ALLEVENTCallback, 传入一个方法，该方法仅会响应 template 模板事件。
+通过配置表格组件Props - ALLEVENTCallback, 传入一个方法，该方法仅会响应 template 模板事件。  
 
 ```javascript
 
