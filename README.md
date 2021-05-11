@@ -234,9 +234,12 @@ export const setActionsTestMock : ActionInterface[] = [
 
 上述还有非常多种，具体可以参考 @/components/Table/tableMock.tsx。（同时你可以使用该文件内的数据生成示例参考，datasource、columns、actions 都是齐全的）
 
-<b>eventType</b> 为事件响应模式 { enumEventType.CALLBACK, enumEventType.MODALBOX, enumEventType.POPCONFIRM }；
-<b>eventSubstance</b> 为配套对应不同 eventType , 配置完全不同；
-<b>condition</b> 为渲染条件，内含 { hide, transparent, locked }, 优先级按此序列；条件书写为 eval(string), 内置关键字为 'record';
+<b>eventType</b> 为事件响应模式 { enumEventType.CALLBACK, enumEventType.MODALBOX, enumEventType.POPCONFIRM }；  
+
+<b>eventSubstance</b> 为配套对应不同 eventType , 配置完全不同；  
+
+<b>condition</b> 为渲染条件，内含 { hide, transparent, locked }, 优先级按此序列；条件书写为 eval(string), 内置关键字为 'record';  
+
 <b>viewMode</b> 为渲染显示模式，文字/icon, { enumViewMode.DEFAULT, enumViewMode.ICON, enumViewMode.ICONTEXT }。
 
 
@@ -319,7 +322,7 @@ export const setColumns = [
 上述代码示例中出现了三个组件内置模板，ColumnCustomType { LINKBUTTON, INPUT, NORMALRENDER }。
 
 <b>optionsApi</b> 为antd-api，这里的设置参数全部是直接 setProps 到 antd-DOM 上的。根据不同的组件查看官方具体的api。
-<b>customSettings<b> 设置一些自定义的dom属性，比如 customSettings.style， 这些最终也会以 setProps 方式应用到 DOM 中；
+<b>customSettings</b> 设置一些自定义的dom属性，比如 customSettings.style， 这些最终也会以 setProps 方式应用到 DOM 中；
 
 为了方便理解，从概念上 <b>optionsApi</b> 可看作【setApis】，<b>customSettings</b>可看作【setPropertys】。
 
