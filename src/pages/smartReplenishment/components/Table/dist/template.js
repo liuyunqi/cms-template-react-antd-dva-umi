@@ -20,12 +20,15 @@ var react_1 = require("react");
 var antd_1 = require("antd");
 var index_d_1 = require("./index.d");
 /*
-
-
-*/
-/*
-  customSettings
-  optionsApi
+@columnItem:{...}           列配置数据
+@text:string | number       当前数据文本
+@record:{...}               当前行完整数据 (rowData)
+@index:number               index
+@options: {
+  customSettings: {...}     自定义属性设置
+  optionsApi: {...}         组件UI-api (如: antd-ui)
+}
+@ALLCALLBACK: Function      统一事件回调入口
 */
 // 默认常规渲染
 exports.renderNORMALRENDER = function (columnItem, text, record, index, options, ALLCALLBACK) {
@@ -154,6 +157,7 @@ function recursiveCondition(conditArr, record) {
 function allocationTemp(unit) {
     var CKEY = unit[index_d_1.customType];
     var callback = null;
+    // 此处有修改的空间，让今后使用者能够外部定义模板及模板类型名称
     if (CKEY) {
         if (CKEY === index_d_1.ColumnCustomType.NORMALRENDER) {
             callback = exports.renderNORMALRENDER;

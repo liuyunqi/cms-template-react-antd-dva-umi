@@ -321,7 +321,7 @@ export const setColumns = [
 <b>optionsApi</b> 为antd-api，这里的设置参数全部是直接 setProps 到 antd-DOM 上的。根据不同的组件查看官方具体的api。
 <b>customSettings<b> 设置一些自定义的dom属性，比如 customSettings.style， 这些最终也会以 setProps 方式应用到 DOM 中；
 
-为了方便理解，从概念上 <b>optionsApi</b> 可看作【setApis】，<b>customSettings<b>可看作【setPropertys】。
+为了方便理解，从概念上 <b>optionsApi</b> 可看作【setApis】，<b>customSettings</b>可看作【setPropertys】。
 
 
 ##### condition
@@ -336,7 +336,7 @@ B 非必填，不填时则渲染默认模板 ColumnCustomType.NORMALRENDER（默
 
 c[0]：书写可以是 true/ false/ 表达式， 或 eval(string)，string数据关键字为 'record';
 
-同时为满足相对复杂的业务需求，这里支持无限层级的  if else 嵌套，代码如下：
+同时为<b>满足相对复杂的业务需求</b>，这里支持无限层级的  if else 嵌套，代码如下：
 
 ```javascript
 
@@ -387,10 +387,70 @@ c[0]：书写可以是 true/ false/ 表达式， 或 eval(string)，string数据
 
 ```
 
+## 模板template
+
+目前使用的模板都是内置的。在 ./template.tsx 中。
+需要新增则需要扩展 ColumnCustomType 类型名称 及 对应的 render 函数。
+
+理想的最优解为之后迭代，让今后使用者能够外部定义追加扩展模板及模板类型名称。
+
+## 表格事件
+
+通过配置表格组件Props - ALLEVENTCallback, 传入一个方法，该方法仅会响应 template 模板事件。
+
+```javascript
+
+// 全表格事件回调捕捉函数
+const tableLLEVENTCallback: ALLEVENTCallbackType = (TYPE, data) => {
+
+  // 输入框 - 每次输入
+  if (TYPE === Enum_ALLEVENT.INPUT_onChange) {
+    const { e, record, columnItem, index } = data;
+    let key = columnItem.key;
+    let value = e.target.value;
+    
+    //...
+  }
+  // 输入框 - 回车 / 失焦
+  else if (TYPE === Enum_ALLEVENT.INPUT_onPressEnter || TYPE === Enum_ALLEVENT.INPUT_onBlur) {
+
+  }
+  // 点击 预测销量
+  else if (TYPE === Enum_ALLEVENT.LINKBUTTON_onClick) {
+    // do anything...
+  }
+}
+
+```
+
+顺便提一嘴，操作栏 ACTION 的事件回调函数为 <b>eventSubstance</b>。在配置 ACTION-item 时被一并配置，根据ACTION类型不同会有所不同。
 
 ## Props Api
 
+```javascript
 
+interface IProps  {
+  dispatch: Dispatch;
+
+  columns: ColumnsType<ColumnsTypeMine>;   // 表格列头
+  dataSource: any[];                       // 表格数据
+  rowKey?: string | undefined;             // 自定义关键参数 default: id
+  isShowPagination?: boolean;              // 是否显示分页组件
+  defaultFirstPage?: number | undefined;   // 默认开始页码
+  pageCurrent?: number | undefined;        // 当前页码
+  pageTotal?: number | undefined;          // 总页码数
+  pageLimit?: number | undefined;          // 单页数据数量
+  pageSizeOptions?: string[] | undefined;  // 单页数量变更
+
+  onPaginationChange?: ((page: number, pageSize: number) => void) | undefined;
+  onPaginationShowSizeChange?: ((current: number, size: number) => void) | undefined;
+  ALLEVENTCallback?: ALLEVENTCallbackType; // 公共回调函数 (可用于解决column-render组合任何组件的无限触发事件回调)
+
+  reloadApiTable?: TableProps<any>;        // antd - table - api
+  reloadApiPagination?: PaginationProps;   // antd - pagination- api
+}
+
+```
 
 
 

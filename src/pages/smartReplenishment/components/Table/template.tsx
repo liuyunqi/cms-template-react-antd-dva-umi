@@ -9,15 +9,16 @@ import { ColumnsTypeMine, ColumnCustomType, customType, conditionUnit, ALLEVENTC
 
 
 /*
-
-
+@columnItem:{...}           列配置数据
+@text:string | number       当前数据文本
+@record:{...}               当前行完整数据 (rowData)
+@index:number               index
+@options: {
+  customSettings: {...}     自定义属性设置
+  optionsApi: {...}         组件UI-api (如: antd-ui)
+}   
+@ALLCALLBACK: Function      统一事件回调入口
 */
-
-/*
-  customSettings
-  optionsApi
-*/
-
 
 // 默认常规渲染
 export const renderNORMALRENDER = (columnItem: ColumnsTypeMine, text: string, record: any, index: number, options: conditionUnit | any = {}, ALLCALLBACK: ALLEVENTCallbackType) => {
@@ -176,6 +177,7 @@ function allocationTemp(unit: conditionUnit):Function | never | null {
   const CKEY = unit[customType];
   let callback: Function | null = null;
 
+  // 此处有修改的空间，让今后使用者能够外部定义模板及模板类型名称
   if (CKEY) {
     if (CKEY === ColumnCustomType.NORMALRENDER) {
       callback = renderNORMALRENDER;
