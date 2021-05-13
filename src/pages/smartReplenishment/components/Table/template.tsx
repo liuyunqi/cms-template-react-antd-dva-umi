@@ -6,7 +6,7 @@ import React from 'react';
 import { Input } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { ColumnsTypeMine, ColumnCustomType, customType, conditionUnit, ALLEVENTCallbackType, Enum_ALLEVENT } from './index.d';
-
+import { dateTransformer, enumDataMode } from '@/public/utils/baseTool'
 
 /*
 @columnItem:{...}           列配置数据
@@ -80,9 +80,20 @@ export const renderLINKBUTTON = (columnItem: ColumnsTypeMine, text: string, reco
   )
 }
 
+// Date 转 日期字符串
+export const renderDATESTRING = (columnItem: ColumnsTypeMine, text: string | number, record: any, index: number, options: conditionUnit | any = {}, ALLCALLBACK: ALLEVENTCallbackType) => {
+  let setProperty = options.customSettings || {};
+  let toNumber = parseInt(text as any);
+  return (
+    <div>
+      <span { ...setProperty }>{ dateTransformer(new Date(toNumber), enumDataMode.FULL) }</span>
+    </div>
+  )
+}
+
 
 // 模板渲染配置器 (廢棄)
-export const TABLETEMPX = (columns: ColumnsTypeMine, eventAllCallback: ALLEVENTCallbackType): ColumnsType<any> => {
+export const TABLETEMPX_UNUSE = (columns: ColumnsTypeMine, eventAllCallback: ALLEVENTCallbackType): ColumnsType<any> => {
   // 识别是否定义渲染的类型模式 - customType [ date时间/ input/ any more... ]
   
   return columns.map((item: any, index: number) => {
@@ -167,7 +178,6 @@ function recursiveCondition(conditArr: [
       }
     }
   }
-
   return result;
 }
 
@@ -185,6 +195,8 @@ function allocationTemp(unit: conditionUnit):Function | never | null {
       callback = renderINPUT;
     } else if (CKEY === ColumnCustomType.LINKBUTTON) {
       callback = renderLINKBUTTON;
+    } else if (CKEY === ColumnCustomType.DATESTRING) {
+      callback = renderDATESTRING;
     }
   }
   

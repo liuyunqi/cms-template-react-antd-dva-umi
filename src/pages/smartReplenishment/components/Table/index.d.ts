@@ -5,9 +5,10 @@ export const customType = 'customType';    // 自定义列项渲染类型 - fix 
 
 // 自定义的表格列项类型
 export enum ColumnCustomType {
-  NORMALRENDER = 'NORMALRENDER',// 默认渲染text
-  INPUT = 'INPUT',              // input 输入单框
-  LINKBUTTON = 'LINKBUTTON',    // 链接按钮
+  NORMALRENDER = 'NORMALRENDER',  // 默认渲染text
+  INPUT = 'INPUT',                // input 输入单框
+  LINKBUTTON = 'LINKBUTTON',      // 链接按钮
+  DATESTRING = 'DATESTRING',      // date转字符
 }
 
 /* export interface ColumnsTypeMine extends ColumnsType<any> {
