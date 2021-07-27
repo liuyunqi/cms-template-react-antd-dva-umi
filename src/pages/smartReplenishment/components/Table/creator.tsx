@@ -42,9 +42,9 @@ interface RowData {
 
 // 条件
 interface ConditionFace {
-  locked?: string;            // 锁定 - is eval() string
-  hide?: string;              // 隐藏 - is eval() string
-  transparent?: string;       // 占位隐藏 - is eval() string
+  locked?: string | boolean;            // 锁定 - is eval() string
+  hide?: string | boolean;              // 隐藏 - is eval() string
+  transparent?: string | boolean;       // 占位隐藏 - is eval() string
 }
 
 // operation item
@@ -60,8 +60,8 @@ export interface sActions {
 // 操作渲染
 export const ColumnRender_operationAction = (text: string, record: RowData, index: number, actions: sActions[]): JSX.Element => {
 
-  console.log('===<>>record', record);
-  console.log('===<>>text', text);
+  // console.log('===<>>record', record);
+  // console.log('===<>>text', text);
 
   let insetDom: JSX.Element[] = [];
 

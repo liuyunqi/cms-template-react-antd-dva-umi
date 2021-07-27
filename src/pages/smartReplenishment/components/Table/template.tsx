@@ -43,6 +43,7 @@ export const renderINPUT = (columnItem: ColumnsTypeMine, text: string, record: a
     // value: text,
     value: text
   }, ...{
+    onFocus: (e: MouseEvent | KeyboardEvent) => ALLCALLBACK(Enum_ALLEVENT.INPUT_onFocus, { e, ...props }),
     onChange: (e: MouseEvent | KeyboardEvent) => ALLCALLBACK(Enum_ALLEVENT.INPUT_onChange, { e, ...props }),
     onPressEnter: (e: MouseEvent | KeyboardEvent) => ALLCALLBACK(Enum_ALLEVENT.INPUT_onPressEnter, { e, ...props }),
     onBlur: (e: MouseEvent | KeyboardEvent) => ALLCALLBACK(Enum_ALLEVENT.INPUT_onBlur, { e, ...props }),

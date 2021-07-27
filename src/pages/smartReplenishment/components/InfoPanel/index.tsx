@@ -50,6 +50,7 @@ const InfoPanelStore: React.FC<IProps> = ({
     return path;
   }
 
+
   // 看板统计 - 渲染构造
   const DOM_totalPanel = (datas: TotalPanelDataProp) => {
     let items: string[] = Object.keys(datas);
@@ -67,7 +68,7 @@ const InfoPanelStore: React.FC<IProps> = ({
           </div>
           <div className={ styles.itemRight }>
             <span className={ styles.name }>{ name }</span>
-            <span className={ styles.value }>{ value }</span>
+            <span className={ styles.value }>{ (value || parseInt(value as string) === 0) ? value : '-' }</span>
           </div>
         </div>
     </div>

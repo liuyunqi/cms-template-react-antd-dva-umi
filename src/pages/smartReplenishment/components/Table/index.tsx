@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { connect, history, Dispatch } from 'umi';
 import { ConnectState } from '../../models/connect';
 
@@ -23,6 +23,9 @@ interface IProps  {
   pageLimit?: number | undefined;          // 单页数据数量
   pageSizeOptions?: string[] | undefined;  // 单页数量变更
 
+  tableRef?: string | ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined;
+  pagainRef?: string | ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined;
+
   onPaginationChange?: ((page: number, pageSize: number) => void) | undefined;
   onPaginationShowSizeChange?: ((current: number, size: number) => void) | undefined;
   ALLEVENTCallback?: ALLEVENTCallbackType; // 公共回调函数 (可用于解决column-render组合任何组件的无限触发事件回调)
@@ -31,7 +34,9 @@ interface IProps  {
   reloadApiPagination?: PaginationProps;   // antd - api
 }
 
-const InfoPanelStore: React.FC<IProps> = ({
+// string | ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined
+
+const TableStore: React.FC<IProps> = ({
   dispatch,
   columns,
   dataSource,
@@ -41,7 +46,11 @@ const InfoPanelStore: React.FC<IProps> = ({
   pageCurrent,
   pageTotal = 0,
   pageLimit = 5,
-  pageSizeOptions = [ '5', '10', '20', '50' ],
+  pageSizeOptions = [ '5', '10', '15', '20', '50' ],
+
+  tableRef,
+  pagainRef,
+
   onPaginationChange,
   onPaginationShowSizeChange,
   ALLEVENTCallback,
@@ -53,8 +62,6 @@ const InfoPanelStore: React.FC<IProps> = ({
 
   let tableSetting: TableProps<any>;            // table props
   let paginationSetting: PaginationProps;       // pagination props
-
-
 
   // 各类修正设定
 
@@ -80,6 +87,7 @@ const InfoPanelStore: React.FC<IProps> = ({
     total: pageTotal,
     pageSize: pageLimit,
     pageSizeOptions,
+    showQuickJumper: true,
     onChange: onPaginationChange,
     onShowSizeChange: onPaginationShowSizeChange,
     showTotal: (numb: number) => `共 ${numb} 条数据`
@@ -87,11 +95,12 @@ const InfoPanelStore: React.FC<IProps> = ({
 
   return (
     <div className={ styles.tableWrapper }>
-      <div className={ styles.tableBox }>
+      <div className={ styles.tableBox }  ref={ tableRef }>
         <Table { ...tableSetting }/>
       </div>
       {
-        isShowPagination && <div className={ styles.paginationBox }>
+        isShowPagination &&
+        <div className={ styles.paginationBox } ref={ pagainRef }>
           <Pagination
             { ...paginationSetting }
           ></Pagination>
@@ -109,4 +118,4 @@ const mapStateToProps = (ALL: ConnectState) => {
   }
 }
 
-export default connect(mapStateToProps)(InfoPanelStore);
+export default connect(mapStateToProps)(TableStore);

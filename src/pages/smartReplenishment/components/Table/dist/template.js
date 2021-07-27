@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 exports.__esModule = true;
-exports.TABLETEMP = exports.TABLETEMPX = exports.renderLINKBUTTON = exports.renderINPUT = exports.renderNORMALRENDER = void 0;
+exports.TABLETEMP = exports.TABLETEMPX_UNUSE = exports.renderDATESTRING = exports.renderLINKBUTTON = exports.renderINPUT = exports.renderNORMALRENDER = void 0;
 /*
   自由配置表格模板；
   column里无需配置事件函数，这里会根据必备函数按定制化方式提前编写好；
@@ -19,6 +19,7 @@ exports.TABLETEMP = exports.TABLETEMPX = exports.renderLINKBUTTON = exports.rend
 var react_1 = require("react");
 var antd_1 = require("antd");
 var index_d_1 = require("./index.d");
+var baseTool_1 = require("@/public/utils/baseTool");
 /*
 @columnItem:{...}           列配置数据
 @text:string | number       当前数据文本
@@ -47,6 +48,7 @@ exports.renderINPUT = function (columnItem, text, record, index, options, ALLCAL
         // value: text,
         value: text
     }), {
+        onFocus: function (e) { return ALLCALLBACK(index_d_1.Enum_ALLEVENT.INPUT_onFocus, __assign({ e: e }, props)); },
         onChange: function (e) { return ALLCALLBACK(index_d_1.Enum_ALLEVENT.INPUT_onChange, __assign({ e: e }, props)); },
         onPressEnter: function (e) { return ALLCALLBACK(index_d_1.Enum_ALLEVENT.INPUT_onPressEnter, __assign({ e: e }, props)); },
         onBlur: function (e) { return ALLCALLBACK(index_d_1.Enum_ALLEVENT.INPUT_onBlur, __assign({ e: e }, props)); }
@@ -76,8 +78,16 @@ exports.renderLINKBUTTON = function (columnItem, text, record, index, options, A
             text,
             " ")));
 };
+// Date 转 日期字符串
+exports.renderDATESTRING = function (columnItem, text, record, index, options, ALLCALLBACK) {
+    if (options === void 0) { options = {}; }
+    var setProperty = options.customSettings || {};
+    var toNumber = parseInt(text);
+    return (react_1["default"].createElement("div", null,
+        react_1["default"].createElement("span", __assign({}, setProperty), baseTool_1.dateTransformer(new Date(toNumber), baseTool_1.enumDataMode.FULL))));
+};
 // 模板渲染配置器 (廢棄)
-exports.TABLETEMPX = function (columns, eventAllCallback) {
+exports.TABLETEMPX_UNUSE = function (columns, eventAllCallback) {
     // 识别是否定义渲染的类型模式 - customType [ date时间/ input/ any more... ]
     return columns.map(function (item, index) {
         var CKEY = item[index_d_1.customType];
@@ -167,6 +177,9 @@ function allocationTemp(unit) {
         }
         else if (CKEY === index_d_1.ColumnCustomType.LINKBUTTON) {
             callback = exports.renderLINKBUTTON;
+        }
+        else if (CKEY === index_d_1.ColumnCustomType.DATESTRING) {
+            callback = exports.renderDATESTRING;
         }
     }
     if (typeof callback !== 'function') {

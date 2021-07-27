@@ -1,12 +1,14 @@
 import { defineConfig } from 'umi';
+
 const BUILD_ENV = require('../src/public/utils/Env');
 const { NODE_ENV, UMI_ENV, PROJECT = 'demo' } = process.env;
 const routeApp = require(`../src/pages/${PROJECT}/route`);
 const getPublicPath = require(`../src/pages/${PROJECT}/config/publicPath`);
+
 const config: any = {
   hash: true, // 打包生产的文件包含hash字符
   history: {
-    type: 'hash', // 可选 browser、hash 和 memory
+    type: 'browser', // 可选 browser、hash 和 memory
   },
   antd: {},
   dva: {
@@ -28,6 +30,7 @@ const config: any = {
    */
   targets: {
     ie: 11,
+    firefox: 53
   },
    /**
    * @param publicPath
@@ -79,7 +82,7 @@ const config: any = {
    * UMI_ENV 通过启动项目时在package.json配置所属环境，用于在项目中调用不同API，已经根据不同的环境执行某些函数
    */
   define: {
-    'process.env.UMI_ENV': JSON.stringify(process.env.UMI_ENV),
+    'process.env.UMI_ENV': JSON.stringify(process.env.UMI_ENV)
   },
   /**
    * 路由

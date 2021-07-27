@@ -11,3 +11,25 @@
     margin-bottom: @commonMargin;
 }
 
+// 特殊需求
+.custom-AntdSelect.ant-select {
+  .ant-select-selector {
+    padding-left: 0;
+    padding-right: 0;
+    width: 90px;
+    border-color: rgba(217, 217, 217, 0);
+
+    &:hover {
+        height: 32px;
+        // border: 1px solid #d9d9d9;
+        border-color: rgba(217, 217, 217, 1);
+    }
+    .ant-select-selection-placeholder {
+        color: rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  .ant-select-arrow {
+    color: rgba(0, 0, 0, 0.85);
+  }
+}

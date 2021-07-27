@@ -1,4 +1,4 @@
-import { ColumnsType } from 'antd/es/table';
+import { ColumnsType, ColumnType } from 'antd/es/table';
 
 
 export const customType = 'customType';    // 自定义列项渲染类型 - fix Key
@@ -38,6 +38,7 @@ export interface ALLEVENTCallbackType {
 // 全事件类型枚举
 export enum Enum_ALLEVENT {
   // 输入框
+  'INPUT_onFocus',
   'INPUT_onChange',
   'INPUT_onPressEnter',
   'INPUT_onBlur',
@@ -59,7 +60,7 @@ export interface conditionUnitComb {
 
 
 // 表格列重载 - item
-export interface rcColumnItem {
+export interface rcColumnItem extends ColumnType<any> {
   name: string;
   key?: string;   // is xx enum
   /* customType?: ColumnCustomType;      // 自定义的模板枚举TYPE标识
@@ -74,7 +75,7 @@ export interface rcColumnItem {
   [
     boolean | string,
     conditionUnit
-  ]
+  ];
 }
 
 // 表格列重载 - item{conf}

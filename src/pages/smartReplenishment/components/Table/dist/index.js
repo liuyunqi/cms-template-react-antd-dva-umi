@@ -27,8 +27,9 @@ var umi_1 = require("umi");
 var antd_1 = require("antd");
 var template_1 = require("./template");
 var index_less_1 = require("./index.less");
-var InfoPanelStore = function (_a) {
-    var dispatch = _a.dispatch, columns = _a.columns, dataSource = _a.dataSource, rowKey = _a.rowKey, _b = _a.isShowPagination, isShowPagination = _b === void 0 ? true : _b, _c = _a.defaultFirstPage, defaultFirstPage = _c === void 0 ? 1 : _c, pageCurrent = _a.pageCurrent, _d = _a.pageTotal, pageTotal = _d === void 0 ? 0 : _d, _e = _a.pageLimit, pageLimit = _e === void 0 ? 5 : _e, _f = _a.pageSizeOptions, pageSizeOptions = _f === void 0 ? ['5', '10', '20', '50'] : _f, onPaginationChange = _a.onPaginationChange, onPaginationShowSizeChange = _a.onPaginationShowSizeChange, ALLEVENTCallback = _a.ALLEVENTCallback, _g = _a.reloadApiTable, reloadApiTable = _g === void 0 ? {} : _g, _h = _a.reloadApiPagination, reloadApiPagination = _h === void 0 ? {} : _h, props = __rest(_a, ["dispatch", "columns", "dataSource", "rowKey", "isShowPagination", "defaultFirstPage", "pageCurrent", "pageTotal", "pageLimit", "pageSizeOptions", "onPaginationChange", "onPaginationShowSizeChange", "ALLEVENTCallback", "reloadApiTable", "reloadApiPagination"]);
+// string | ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined
+var TableStore = function (_a) {
+    var dispatch = _a.dispatch, columns = _a.columns, dataSource = _a.dataSource, rowKey = _a.rowKey, _b = _a.isShowPagination, isShowPagination = _b === void 0 ? true : _b, _c = _a.defaultFirstPage, defaultFirstPage = _c === void 0 ? 1 : _c, pageCurrent = _a.pageCurrent, _d = _a.pageTotal, pageTotal = _d === void 0 ? 0 : _d, _e = _a.pageLimit, pageLimit = _e === void 0 ? 5 : _e, _f = _a.pageSizeOptions, pageSizeOptions = _f === void 0 ? ['5', '10', '15', '20', '50'] : _f, tableRef = _a.tableRef, pagainRef = _a.pagainRef, onPaginationChange = _a.onPaginationChange, onPaginationShowSizeChange = _a.onPaginationShowSizeChange, ALLEVENTCallback = _a.ALLEVENTCallback, _g = _a.reloadApiTable, reloadApiTable = _g === void 0 ? {} : _g, _h = _a.reloadApiPagination, reloadApiPagination = _h === void 0 ? {} : _h, props = __rest(_a, ["dispatch", "columns", "dataSource", "rowKey", "isShowPagination", "defaultFirstPage", "pageCurrent", "pageTotal", "pageLimit", "pageSizeOptions", "tableRef", "pagainRef", "onPaginationChange", "onPaginationShowSizeChange", "ALLEVENTCallback", "reloadApiTable", "reloadApiPagination"]);
     var tableSetting; // table props
     var paginationSetting; // pagination props
     // 各类修正设定
@@ -48,19 +49,21 @@ var InfoPanelStore = function (_a) {
         total: pageTotal,
         pageSize: pageLimit,
         pageSizeOptions: pageSizeOptions,
+        showQuickJumper: true,
         onChange: onPaginationChange,
         onShowSizeChange: onPaginationShowSizeChange,
         showTotal: function (numb) { return "\u5171 " + numb + " \u6761\u6570\u636E"; }
     }, reloadApiPagination);
     return (react_1["default"].createElement("div", { className: index_less_1["default"].tableWrapper },
-        react_1["default"].createElement("div", { className: index_less_1["default"].tableBox },
+        react_1["default"].createElement("div", { className: index_less_1["default"].tableBox, ref: tableRef },
             react_1["default"].createElement(antd_1.Table, __assign({}, tableSetting))),
-        isShowPagination && react_1["default"].createElement("div", { className: index_less_1["default"].paginationBox },
-            react_1["default"].createElement(antd_1.Pagination, __assign({}, paginationSetting)))));
+        isShowPagination &&
+            react_1["default"].createElement("div", { className: index_less_1["default"].paginationBox, ref: pagainRef },
+                react_1["default"].createElement(antd_1.Pagination, __assign({}, paginationSetting)))));
 };
 // connect props...
 var mapStateToProps = function (ALL) {
     var loading = ALL.loading;
     return __assign({}, loading);
 };
-exports["default"] = umi_1.connect(mapStateToProps)(InfoPanelStore);
+exports["default"] = umi_1.connect(mapStateToProps)(TableStore);
